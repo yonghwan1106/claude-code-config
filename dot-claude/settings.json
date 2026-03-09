@@ -1,0 +1,43 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Add-Content -Path $env:USERPROFILE\\.claude\\tool-log.txt -Value (Get-Date) -Encoding UTF8\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node C:\\Users\\user\\.claude\\hud\\omc-hud.mjs"
+  },
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "oh-my-claudecode@omc": true
+  },
+  "language": "korea",
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "skipDangerousModePermissionPrompt": true,
+  "mcpServers": {
+    "cue": {
+      "command": "C:/Users/user/AppData/Local/Microsoft/WindowsApps/PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0/python.exe",
+      "args": [
+        "-m",
+        "cue"
+      ]
+    },
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp"
+    }
+  }
+}

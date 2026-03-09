@@ -1,0 +1,16 @@
+# 민감 정보 제외
+.credentials.json
+settings.local.json
+history.jsonl
+.session-stats.json
+*.jsonl
+
+# 세션/캐시 데이터
+cache/
+debug/
+file-history/
+shell-snapshots/
+session-env/
+paste-cache/
+backups/
+statsig/

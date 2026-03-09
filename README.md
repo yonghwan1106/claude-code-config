@@ -108,3 +108,83 @@ git push
 ```
 
 도서관에서는 `git pull`로 최신 설정을 받은 후 다시 `setup.sh` 실행.
+
+---
+
+## 도서관 PC 전체 세팅 가이드 (처음부터 끝까지)
+
+도서관 등 공용 PC에서 Claude Code + 공모전 프로젝트를 사용하는 전체 순서입니다.
+
+### Step 1: 필수 프로그램 설치
+
+```bash
+# Node.js (LTS) — https://nodejs.org 에서 다운로드 설치
+# Git — https://git-scm.com 에서 다운로드 설치
+
+# 설치 확인
+node --version
+git --version
+```
+
+### Step 2: Claude Code 설치 & 로그인
+
+```bash
+npm install -g @anthropic-ai/claude-code
+claude login
+# 브라우저에서 로그인 진행
+```
+
+### Step 3: Claude Code 환경 설정 복원
+
+```bash
+git clone https://github.com/yonghwan1106/claude-code-config.git
+cd claude-code-config
+bash setup.sh
+```
+
+### Step 4: 공모전 프로젝트 다운로드
+
+```bash
+git clone https://github.com/yonghwan1106/contest-projects-2026.git
+```
+
+### Step 5: 작업 시작
+
+```bash
+# 원하는 공모전 폴더로 이동해서 Claude Code 실행
+cd contest-projects-2026
+claude
+```
+
+### Step 6: 작업 완료 후 저장 (push)
+
+```bash
+# 공모전 프로젝트 변경사항 push
+cd contest-projects-2026
+git add -A
+git commit -m "도서관 작업: [간단 설명]"
+git push
+```
+
+### Step 7: 집 PC에서 변경사항 받기
+
+```bash
+# 집에서 도서관 작업 내용 동기화
+cd "C:/Users/user/Desktop/공모전/contest-projects-2026"
+git pull
+```
+
+---
+
+## 관련 레포
+
+| 레포 | 용도 | 공개 |
+|------|------|------|
+| [claude-code-config](https://github.com/yonghwan1106/claude-code-config) | Claude Code 환경 설정 | Public |
+| [contest-projects-2026](https://github.com/yonghwan1106/contest-projects-2026) | 공모전 프로젝트 28개 | Private |
+
+## 주의사항
+
+- 공모전 프로젝트는 **Private** 레포 — 도서관 PC에서 `git clone` 시 GitHub 로그인 필요
+- 도서관 PC 사용 후 **반드시 로그아웃**: `claude logout` 및 GitHub 자격 증명 제거
+- `node_modules/`는 .gitignore로 제외됨 — Next.js 프로젝트는 `npm install` 필요
